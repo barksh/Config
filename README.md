@@ -1,0 +1,3 @@
+# Config
+
+:rainbow: Config file
