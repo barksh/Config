@@ -1,0 +1,47 @@
+{
+  "name": "@barksh/config",
+  "version": "0.0.1",
+  "description": ":rainbow: Config file",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barksh/Config.git"
+  },
+  "keywords": [
+    "Barksh"
+  ],
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barksh/Config/issues"
+  },
+  "homepage": "https://github.com/barksh/Config#readme",
+  "dependencies": {
+    "@sudoo/bark": "^2.1.0",
+    "connor": "^2.4.0"
+  },
+  "devDependencies": {
+    "@sudoo/mock": "^1.2.0",
+    "@sudoo/triforce": "^1.5.0"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "require": [
+      "./test/tshook.js"
+    ],
+    "sourceMap": true
+  }
+}
