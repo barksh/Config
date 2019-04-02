@@ -7,6 +7,8 @@
 import * as OS from "os";
 import * as Path from "path";
 
+export const getConfigFileName = (): string => '.bark.config';
+
 export const getAppDataPath = (): string => {
 
     const os: NodeJS.Platform = OS.platform();

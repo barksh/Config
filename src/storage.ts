@@ -6,32 +6,36 @@
 
 import { _Json } from "@sudoo/bark/json";
 import { Ensure, pathExists, readTextFile, writeTextFile } from "@sudoo/io";
-import { getAppDataPath } from "./path";
+import * as Path from "path";
+import { getAppDataPath, getConfigFileName } from "./path";
 
-export const getOrInitConfigFromPath = async <T>(path: string, initDefault: T): Promise<T> => {
+export const getOrInitConfigFromFilePath = async <T>(filePath: string, initDefault: T): Promise<T> => {
 
-    const exist: boolean = await pathExists(path);
+    const exist: boolean = await pathExists(filePath);
 
     if (!exist) {
 
         const ensure: Ensure = Ensure.create();
 
-        await ensure.ensure(path);
-        await writeTextFile(path, _Json.formatStringify(initDefault));
+        await ensure.ensure(filePath);
+        await writeTextFile(filePath, _Json.formatStringify(initDefault));
 
         return initDefault;
     }
 
-    const file: string = await readTextFile(path);
+    const file: string = await readTextFile(filePath);
 
     const parsed: T = _Json.safeParse(file, new Error('Config file not valid'));
     return parsed;
 };
 
-export const getOrInitConfig = async <T>(initDefault: T): Promise<T> => {
+export const getOrInitConfigWithDefaultFileName = async <T>(initDefault: T): Promise<T> => {
 
+    const fileName: string = getConfigFileName();
     const appDataPath: string = getAppDataPath();
 
-    const parsed: T = await getOrInitConfigFromPath(appDataPath, initDefault);
+    const filePath: string = Path.join(appDataPath, fileName);
+
+    const parsed: T = await getOrInitConfigFromFilePath(filePath, initDefault);
     return parsed;
 };
