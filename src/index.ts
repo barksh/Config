@@ -6,4 +6,5 @@
 
 export * from "./path";
 export * from "./storage";
+export { Config } from "./config";
 
