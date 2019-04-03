@@ -28,7 +28,12 @@ export class Config {
 
     private constructor(path: string) {
 
-        this._path = path;
+        this._path = Path.resolve(path);
+    }
+
+    public get path(): string {
+
+        return this._path;
     }
 
     public async getOrInit<T>(defaultConfig: T): Promise<T> {
@@ -41,5 +46,10 @@ export class Config {
 
         await replaceConfigFromFilePath(this._path, config);
         return;
+    }
+
+    public joinPath(...paths: string[]): string {
+
+        return Path.join(this._path, ...paths);
     }
 }
