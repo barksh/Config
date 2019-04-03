@@ -1,6 +1,6 @@
 {
   "name": "@barksh/config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": ":rainbow: Config file",
   "directories": {
     "doc": "docs"
