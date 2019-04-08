@@ -20,7 +20,7 @@
   "homepage": "https://github.com/barksh/Config#readme",
   "dependencies": {
     "@sudoo/bark": "^2.3.0",
-    "@sudoo/io": "^0.1.0",
+    "@sudoo/io": "^1.2.0",
     "connor": "^2.4.0"
   },
   "devDependencies": {
